@@ -1,2 +1,2 @@
 # IT-Support-ActiveDirectory-osTicket-Lab
-Enterprise Service Desk Lab: Active Directory DS deployment, LDAP integration with osTicket, and L1/L2 ticketing simulation.
+Enterprise Service Desk Lab: Active Directory DS deployment, LDAP integration with osTicket, and L1/L2 ticketing simulation..
