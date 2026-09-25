@@ -1,2 +1,29 @@
-# IT-Support-ActiveDirectory-osTicket-Lab
-Enterprise Service Desk Lab: Active Directory DS deployment, LDAP integration with osTicket, and L1/L2 ticketing simulation...
+Building a Complete On-Premises Helpdesk Lab Environment
+To sharpen my Systems Administration and IT Infrastructure skills, I recently designed, deployed, and configured a full end-to-end ticketing system lab using VirtualBox, Windows Server 2022, Ubuntu Server, and osTicket.
+Here is a breakdown of the network architecture and technical implementation:
+🛠️ Technical Setup & Infrastructure:
+Domain Controller (DC1 - Windows Server 2022): Managed DNS (Forward Lookup Zones with A-records) and configured DHCP scopes within a dedicated internal network.
+Web & Database Server (Ubuntu Server): Deployed a LAMP stack to host osTicket on Apache backed by a MySQL database (osticket_db).
+Network & Security Hardening: Configured static IP reservations (172.16.0.100), restricted file permissions on config files, and removed sensitive setup directories post-installation.
+🔄 Ticketing Lifecycle & Workflows Tested:
+DNS Resolution: Configured osticket.roxtlab.com to resolve seamlessly across domain workstations.
+User & Agent Management: Provisioned end-user accounts and support agents with appropriate departmental permissions in the Staff Control Panel.
+End-to-End Testing: Simulated real-world ticket submission, agent assignment, resolution, and ticket closure.
+This hands-on lab provided great practical experience in web hosting, Linux system administration, Active Directory integration, and IT Service Management (ITSM) concepts.
+<img width="800" height="501" alt="image" src="https://github.com/user-attachments/assets/b0c3b1b4-f13f-41c6-a7d5-18e2d0e42cb7" />
+
+🏗️ Lab Architecture & Topology
+The environment is fully virtualized using VirtualBox with a dedicated internal network (Lab Internal) isolated from external interference, while maintaining internet gateway capabilities via the domain controller.   Domain Controller (DC1): Windows Server 2022 (RoxTLab.com)   Client Workstation: Windows 10 Pro (DHCP assigned)   Server Infrastructure: Ubuntu Server (172.16.0.100) running Apache, MySQL, PHP (LAMP) and osTicket 
+<img width="945" height="575" alt="image" src="https://github.com/user-attachments/assets/6f39d626-793c-4b54-9ff6-e2b209945bf0" />
+
+🚀 Step-by-Step 
+Implementation GuidePhase 1: Virtual Network & Windows Server Configuration (DC1)VirtualBox Network Setup: Created an Internal Network named Lab Internal.Active Directory Domain Services (AD DS): Installed AD DS on Windows Server 2022.Promoted the server to a Domain Controller with the root domain RoxTLab.com.   DHCP Scope Configuration:Configured a DHCP scope (172.16.0.100 - 172.16.0.200) to dynamically provision IP addresses for internal lab workstations.   Set up a static IP reservation (172.16.0.100) specifically for the Ubuntu server hosting the ticketing system.
+📸 Photo recommandée pour le README : Une capture de ton gestionnaire DHCP sur Windows Server montrant l'étendue active et la réservation d'adresse IP de osTicket.
+Phase 2: Ubuntu Server & LAMP Stack DeploymentOS Installation: Deployed Ubuntu Server on the reserved static IP (172.16.0.100).   Web & Database Services:Installed the Apache2 web server and PHP modules required by osTicket.Installed and secured MySQL Server (mysql-server).Database Preparation:Logged into MySQL and initialized the dedicated database and user:SQLCREATE DATABASE osticket_db;
+CREATE USER 'osticket_user'@'localhost' IDENTIFIED BY 'SecurePassword';
+GRANT ALL PRIVILEGES ON osticket_db.* TO 'osticket_user'@'localhost';
+FLUSH PRIVILEGES;
+📸 Photo recommandée pour le README : Un terminal Ubuntu montrant la commande SHOW TABLES; dans la base de données osticket_db.Phase 3: osTicket Deployment & Security HardeningSource Code Extraction: Downloaded and extracted osTicket into the Apache web directory (/var/www/html/ or custom path).Configuration Setup: Copied the sample configuration file to ost-config.php.Security Posture Enforcement:Restricted file permissions on the configuration file to prevent unauthorized read/write access:Bashchmod 0644 include/ost-config.php
+Completely removed the installation directory (/setup) from the web root to block remote re-installation exploits.📸 Photo recommandée pour le README : Une capture d'écran du terminal montrant les permissions de fichiers sécurisées (ls -l ost-config.php).Phase 4: DNS Integration & FQDN ConfigurationDNS Manager (Windows Server):Opened DNS Manager on DC1 under the RoxTLab.com forward lookup zone.   Created a new Host (A) Record mapping osticket.roxtlab.com directly to the Ubuntu server IP (172.16.0.100).   Validation: Verified smooth name resolution from client workstations to ensure seamless browser access via the FQDN instead of raw IP addresses.📸 Photo recommandée pour le README : La console DNS de Windows Server montrant l'enregistrement A osticket pointant vers 172.16.0.100.   Phase 5: Ticketing Workflow & AdministrationAgent Provisioning:Created staff accounts (e.g., GusIT) within the Staff Control Panel (/scp), assigning appropriate departmental roles and permissions.End-to-End Testing:Client Portal: Submitted a sample support request via [http://osticket.roxtlab.com](http://osticket.roxtlab.com).Staff Portal: Logged in as an agent, claimed the ticket, posted internal notes, replied to the user, and successfully closed the ticket lifecycle.📸 Photo recommandée pour le README : Une vue du portail client de osTicket ou du panneau d'administration des agents montrant un ticket fermé avec succès.
+🎯 Skills & Competencies DemonstratedSystems Administration: 
+Windows Server 2022 Active Directory, DNS, DHCP implementation.Linux & Web Hosting: Ubuntu Server administration, LAMP stack configuration (Apache, MySQL, PHP).Security Best Practices: File permission restriction, attack surface reduction (removing setup directories). IT Service Management (ITSM): End-user ticketing workflows, agent role management, and service lifecycle handling.
