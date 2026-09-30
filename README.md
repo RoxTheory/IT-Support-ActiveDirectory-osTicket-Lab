@@ -34,7 +34,21 @@ Completely removed the installation directory (/setup) from the web root to bloc
 
 <img width="566" height="31" alt="PermissionOsticket" src="https://github.com/user-attachments/assets/9990c2c9-8fb9-4fa1-93c9-7919ae9f1b3d" />
 
-Phase 4: DNS Integration & FQDN ConfigurationDNS Manager (Windows Server): Opened DNS Manager on DC1 under the RoxTLab.com forward lookup zone.   Created a new Host (A) Record mapping osticket.roxtlab.com directly to the Ubuntu server IP (172.16.0.100).   Validation: Verified smooth name resolution from client workstations to ensure seamless browser access via the FQDN instead of raw IP addresses.📸 Photo recommandée pour le README : La console DNS de Windows Server montrant l'enregistrement A osticket pointant vers 172.16.0.100. 
-Phase 5: Ticketing Workflow & AdministrationAgent Provisioning:Created staff accounts (e.g., GusIT) within the Staff Control Panel (/scp), assigning appropriate departmental roles and permissions.End-to-End Testing:Client Portal: Submitted a sample support request via [http://osticket.roxtlab.com](http://osticket.roxtlab.com).Staff Portal: Logged in as an agent, claimed the ticket, posted internal notes, replied to the user, and successfully closed the ticket lifecycle.📸 Photo recommandée pour le README : Une vue du portail client de osTicket ou du panneau d'administration des agents montrant un ticket fermé avec succès.
-🎯 Skills & Competencies DemonstratedSystems Administration: 
-Windows Server 2022 Active Directory, DNS, DHCP implementation.Linux & Web Hosting: Ubuntu Server administration, LAMP stack configuration (Apache, MySQL, PHP).Security Best Practices: File permission restriction, attack surface reduction (removing setup directories). IT Service Management (ITSM): End-user ticketing workflows, agent role management, and service lifecycle handling.
+Phase 4: DNS Integration & FQDN ConfigurationDNS Manager (Windows Server): Opened DNS Manager on DC1 under the RoxTLab.com forward lookup zone.   Created a new Host (A) Record mapping osticket.roxtlab.com directly to the Ubuntu server IP (172.16.0.100).   Validation: Verified smooth name resolution from client workstations to ensure seamless browser access via the FQDN instead of raw IP addresses.
+
+<img width="751" height="524" alt="DNS_A_address" src="https://github.com/user-attachments/assets/4c26d63a-11fe-45b4-82d8-b0c4a7ac64b7" />
+
+La console DNS de Windows Server montrant l'enregistrement A osticket pointant vers 172.16.0.100. 
+
+Phase 5: Ticketing Workflow & Administration Agent Provisioning: Created staff accounts (e.g., GusIT) within the Staff Control Panel (/scp), assigning appropriate departmental roles and permissions.End-to-End Testing:Client Portal: Submitted a sample support request via [http://osticket.roxtlab.com](http://osticket.roxtlab.com).Staff Portal: Logged in as an agent, claimed the ticket, posted internal notes, replied to the user, and successfully closed the ticket lifecycle.
+
+<img width="973" height="722" alt="Portal_login" src="https://github.com/user-attachments/assets/d2277cfa-5189-45b5-891a-8d2f43c8e44d" />
+<img width="957" height="395" alt="userosticket" src="https://github.com/user-attachments/assets/7b7cefa3-8e61-4766-9111-91693a2c28c7" />
+<img width="972" height="720" alt="solved_ticket" src="https://github.com/user-attachments/assets/03e3c279-f197-4bd7-9adb-3000b9322134" />
+
+
+🎯 Skills & Competencies Demonstrated 
+Systems Administration: 
+Windows Server 2022 Active Directory, DNS, DHCP implementation.Linux & Web Hosting: Ubuntu Server administration, LAMP stack configuration (Apache, MySQL, PHP).Security Best Practices: File permission restriction, attack surface reduction (removing setup directories). 
+IT Service Management (ITSM):
+End-user ticketing workflows, agent role management, and service lifecycle handling.
